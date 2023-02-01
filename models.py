@@ -28,14 +28,9 @@ class DownloadRecord(db.Model):
 
 class GameExchangeCode(db.Model):
     __tablename__ = 'game_exchange_code'
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    code = db.Column(db.String(99), nullable=False)  # 兑换码
+    code = db.Column(db.String(99), primary_key=True, nullable=False, unique=True)  # 兑换码
     GoldCoin = db.Column(db.Integer, nullable=False)  # 金币
-    Giamond = db.Column(db.Integer, nullable=False)  # 钻石
-    is_use = db.Column(db.Enum("是", "否"), nullable=False)
+    Diamond = db.Column(db.Integer, nullable=False)  # 钻石
+    is_use = db.Column(db.Enum("是", "否"), default="否", nullable=False)
 
 
-if __name__ == '__main__':
-    app.app_context().push()
-    db.drop_all()
-    db.create_all()

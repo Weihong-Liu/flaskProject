@@ -5,6 +5,7 @@ from extension import db
 from blueprints.anno import anno
 from blueprints.order import order
 from blueprints.file import file
+from blueprints.code import code
 
 app = Flask(__name__)
 app.config.from_object(config)
@@ -16,6 +17,7 @@ migrate = Migrate(app, db)
 app.register_blueprint(anno)
 app.register_blueprint(order)
 app.register_blueprint(file)
+app.register_blueprint(code)
 
 
 

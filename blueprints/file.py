@@ -1,8 +1,6 @@
 import os
 import time
-
 from flask import Blueprint, render_template, request, send_from_directory
-
 from config import UPLOAD_FOLDER
 
 file = Blueprint("file", __name__, url_prefix="/file")
