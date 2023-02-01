@@ -1,22 +1,12 @@
-from flask_sqlalchemy import SQLAlchemy
-from flask import Flask
 from datetime import datetime
-import pymysql
-
-app = Flask(__name__)
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://LWH:123456@120.76.202.170:3306/test'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_ECHO'] = True
-db = SQLAlchemy(app)
-
+from extension import db
 
 # 公告数据库
 class Announcement(db.Model):
     __tablename__ = 'announcements'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     announcement = db.Column(db.String(99), nullable=False)
-    update_time = db.Column(db.DateTime, default=datetime.now)
+    update_time = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
     # def __str__(self):
     #     return self.announcement
 
@@ -46,6 +36,6 @@ class GameExchangeCode(db.Model):
 
 
 if __name__ == '__main__':
-    # db.drop_all()
     app.app_context().push()
+    db.drop_all()
     db.create_all()
