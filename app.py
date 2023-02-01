@@ -18,7 +18,7 @@ app.register_blueprint(anno)
 app.register_blueprint(order)
 app.register_blueprint(file)
 app.register_blueprint(code)
-
+app.secret_key = "xxxx"
 
 
 if __name__ == '__main__':

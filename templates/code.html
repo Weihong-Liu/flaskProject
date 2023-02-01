@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>游戏兑换码</title>
+</head>
+<body>
+    <div class="generate">
+        <h1>生成兑换码</h1>
+         <form method="post" action="/code/generate">
+            {{ generate_code_form.csrf_token() }}
+            {{ generate_code_form.code_num.label }} {{ generate_code_form.code_num }} <br>
+            {{ generate_code_form.gold_coin.label }} {{ generate_code_form.gold_coin  }} <br>
+            {{ generate_code_form.diamond.label }} {{ generate_code_form.diamond }} <br>
+            {{ generate_code_form.submit }}
+        </form>
+    </div>
+    <div class="exchange">
+        <h1>兑换奖励</h1>
+        <form method="post" action="/code/exchange">
+            {{ exchange_code.csrf_token() }}
+            {{ exchange_code.code.label }} {{ exchange_code.code }} <br>
+            {{ exchange_code.submit }}
+        </form>
+    </div>
+</body>
+<script>
+
+</script>
+</html>
